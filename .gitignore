@@ -1,0 +1,13 @@
+# Virtual environment
+wca/
+
+# Python cache
+__pycache__/
+.pytest_cache/
+
+# Environment variables
+.env
+
+# Logs
+app.log
+*.log
