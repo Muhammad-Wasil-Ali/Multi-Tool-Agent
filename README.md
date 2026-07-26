@@ -1,3 +1,4 @@
+![CI](https://github.com/Muhammad-Wasil-Ali/Multi-Tool-Agent/actions/workflows/ci.yml/badge.svg)
 # Multi-Tool Agent(Weather & Currency Conversion Agent)
 
 An AI agent built with **LangChain** and **FastAPI** that answers natural language queries about weather forecasts and currency conversion. The agent uses tool-calling to decide when and how to fetch live weather data or currency exchange rates, chaining multiple tool calls together when a query requires it (e.g. "What's the weather in Lahore and convert 100 USD to PKR?").
