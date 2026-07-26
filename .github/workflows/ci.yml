@@ -33,5 +33,5 @@ jobs:
           EXCHANGERATE_API_KEY: ${{ secrets.EXCHANGERATE_API_KEY }}
         run: pytest tests/ -v
 
-      - name: Build Docker image
+      - name: Build Docker img
         run: docker build -t weather-currency-agent:${{ github.sha }} .
