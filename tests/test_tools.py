@@ -1,32 +1,28 @@
 # tests/test_weather_tool.py
 
-from unittest.mock import patch, MagicMock
-import pytest
+from unittest.mock import MagicMock, patch
 
-from app.tools.search_weather import search_weather
 # from app.tools.currency import currency_converter
+from app.tools.search_weather import search_weather
 
-from app.exception.custome_exceptions import CityNotFoundError
+# def test_search_weather_success():
+#     with patch("app.tools.search_weather.requests.get") as mock_get:
+#         mock_response = MagicMock()
+#         mock_response.status_code = 200
+#         mock_response.json.return_value = {
+#             "cod": "200",
+#             "list": [
+#                 {"main": {"temp": 30}, "weather": [{"description": "clear sky"}], "dt_txt": "2026-07-23 12:00:00"}
+#             ],
+#             "city": {"name": "Attock"}
+#         }
+#         mock_response.raise_for_status.return_value = None
+#         mock_get.return_value = mock_response
 
+#         result = search_weather.invoke({"city_name": "Attock", "days": 1})
 
-def test_search_weather_success():
-    with patch("app.tools.search_weather.requests.get") as mock_get:
-        mock_response = MagicMock()
-        mock_response.status_code = 200
-        mock_response.json.return_value = {
-            "cod": "200",
-            "list": [
-                {"main": {"temp": 30}, "weather": [{"description": "clear sky"}], "dt_txt": "2026-07-23 12:00:00"}
-            ],
-            "city": {"name": "Attock"}
-        }
-        mock_response.raise_for_status.return_value = None
-        mock_get.return_value = mock_response
-
-        result = search_weather.invoke({"city_name": "Attock", "days": 1})
-
-        assert result["cod"] == "200"
-        assert result["city"]["name"] == "Attock"
+#         assert result["cod"] == "200"
+#         assert result["city"]["name"] == "Attock"
 
 
 def test_search_weather_success():

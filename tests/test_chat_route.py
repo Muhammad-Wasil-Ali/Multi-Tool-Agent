@@ -1,11 +1,12 @@
-from fastapi.testclient import TestClient
-from unittest.mock import patch,MagicMock
-from app.main import app
+from unittest.mock import MagicMock, patch
 
+from fastapi.testclient import TestClient
+
+from app.main import app
 
 client=TestClient(app)
 
-def make_fake_message(content:str,tool_calls:list=None):
+def make_fake_message(content:str,tool_calls:list | None=None):
     fake_message=MagicMock()
     fake_message.content=content
     fake_message.tool_calls=tool_calls or []

@@ -1,12 +1,12 @@
-from typing import Type
 
 import requests
 from langchain_core.tools import BaseTool
 from pydantic import BaseModel, Field
 
 from app.configs.keys_config import settings
+from app.exception.custome_exceptions import CityNotFoundError, WeatherAPIError
 from app.logger.custom_logger import get_logger
-from app.exception.custome_exceptions import WeatherAPIError, CityNotFoundError
+
 WEATHER_API_KEY = settings.WEATHER_API_KEY
 logger=get_logger(__name__)
 
@@ -29,7 +29,7 @@ class SearchWeatherTool(BaseTool):
         "or weather forecast for a city."
     )
 
-    args_schema: Type[WeatherToolSchema] = WeatherToolSchema
+    args_schema: type[WeatherToolSchema] = WeatherToolSchema
     def _run(self, city_name: str, days: int):
         """
         Fetch weather forecast from OpenWeatherMap API.
@@ -64,7 +64,7 @@ class SearchWeatherTool(BaseTool):
         except requests.exceptions.RequestException as e:
             logger.error(f"Weather API request failed: {e}")
             raise WeatherAPIError(f"Weather API request failed: {e}")
-        logger.info(f"Weather Fetched Successfully")
+        logger.info("Weather Fetched Successfully")
         return clean_weather_data(response.json())
 
 

@@ -1,9 +1,9 @@
 from langchain.agents import create_agent
-from app.agents.models import model
-from app.tools.search_weather import search_weather
-from app.tools.currency import currency_converter,rate_conversion
-from app.logger.custom_logger import get_logger
 
+from app.agents.models import model
+from app.logger.custom_logger import get_logger
+from app.tools.currency import currency_converter, rate_conversion
+from app.tools.search_weather import search_weather
 
 logger=get_logger(__name__)
 
@@ -13,7 +13,7 @@ You are an AI help ful assistant and your name is 'M W A'.Always use the provide
 
 def get_agent():
     
-    logger.info(f"Initializing agent... ")
+    logger.info("Initializing agent... ")
     return create_agent(model=model,tools=[search_weather,rate_conversion,currency_converter],system_prompt=SYSTEM_PROMPT) 
 
 agent=get_agent()

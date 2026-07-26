@@ -1,7 +1,7 @@
 # app/api/schemas.py
 
+
 from pydantic import BaseModel, Field
-from typing import List
 
 
 class ChatRequest(BaseModel):
@@ -10,4 +10,4 @@ class ChatRequest(BaseModel):
 
 class ChatResponse(BaseModel):
     reply: str = Field(description="Agent's final natural language answer")
-    tool_calls_made: List[str] = Field(default=[], description="Names of tools the agent called while answering, in order")
+    tool_calls_made: list[str] = Field(default=[], description="Names of tools the agent called while answering, in order")

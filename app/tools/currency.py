@@ -1,10 +1,12 @@
-from langchain_core.tools import BaseTool
-from app.configs.keys_config import settings
-from pydantic import BaseModel,Field
-from typing import Type
+
 import requests
-from app.exception.custome_exceptions import CurrencyAPIError,InvalidCurrencyCodeError
+from langchain_core.tools import BaseTool
+from pydantic import BaseModel, Field
+
+from app.configs.keys_config import settings
+from app.exception.custome_exceptions import CurrencyAPIError, InvalidCurrencyCodeError
 from app.logger.custom_logger import get_logger
+
 EXCHANGERATE_API_KEY=settings.EXCHANGERATE_API_KEY
 
 logger=get_logger(__name__)
@@ -20,7 +22,7 @@ class CurrencyConverterSchema(BaseModel):
 class RateConversion(BaseTool):
     name:str="rate_conversion"
     description:str="This tool take base currency and target currency as input and get converion rate between the given currencies"
-    args_schema:Type[ConverionRateSchema]=ConverionRateSchema
+    args_schema:type[ConverionRateSchema]=ConverionRateSchema
     
     
     def _run(self,base_currency:str,target_currency:str):
@@ -61,7 +63,7 @@ class RateConversion(BaseTool):
 class CurrencyConvert(BaseTool):
     name:str="currency_converter"
     description:str="This tool accept the base currency as integer and conversion rate as input and convert the bse currency into target currency"
-    args_schema:Type[CurrencyConverterSchema]=CurrencyConverterSchema
+    args_schema:type[CurrencyConverterSchema]=CurrencyConverterSchema
     
     
     def _run(self,base_currency:int,conversion_rate:float):

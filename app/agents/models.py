@@ -1,7 +1,7 @@
 from langchain_openrouter import ChatOpenRouter
+
 from app.configs.keys_config import settings
 from app.logger.custom_logger import get_logger
-
 
 logger=get_logger(__name__)
 def get_model():

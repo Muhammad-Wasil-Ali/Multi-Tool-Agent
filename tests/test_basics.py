@@ -1,4 +1,5 @@
-from unittest.mock import patch,MagicMock
+from unittest.mock import MagicMock, patch
+
 
 def get_weather_data(city):
     import requests
